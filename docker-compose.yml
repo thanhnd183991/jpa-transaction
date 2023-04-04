@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  cache:
+    container_name: cache
+    image: redis:latest
+    restart: unless-stopped
+    command: [ "redis-server", "--protected-mode", "no" ]
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB, FLUSHALL
+    networks:
+      - spring
+  be:
+    image: be
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - "SPRING_PROFILES_ACTIVE=test"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - cache
+    links:
+      - cache:cache
+    networks:
+      - spring
+networks:
+  spring:
+    external: true
+
+
+
+
