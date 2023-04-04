@@ -3,6 +3,7 @@ package thanh.be.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import thanh.be.controller.services.EmployeeService;
 import thanh.be.dao.EmployeeDAO;
 import thanh.be.dao.EmployeeRepo;
 import thanh.be.threads.RunnableImpl;
@@ -19,6 +20,7 @@ import java.util.concurrent.Executors;
 public class EmployeeController {
     //    private final EmployeeDAO employeeDAO;
     private final EmployeeRepo employeeRepo;
+    private final EmployeeService employeeService;
 
     @PostMapping
     public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
@@ -29,13 +31,13 @@ public class EmployeeController {
                 employeeRepo.save(employee);
             }
         });
-       
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                employeeRepo.save(employee);
-            }
-        });
+
+//        executorService.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                employeeRepo.save(employee);
+//            }
+//        });
 
         return ResponseEntity.ok().body("create new employee");
     }
@@ -44,6 +46,11 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>> list() {
         List<Employee> employees = employeeRepo.findAll();
         return ResponseEntity.ok().body(employees);
+    }
+
+    @GetMapping("test")
+    public void tet() {
+        employeeService.test();
     }
 
     @DeleteMapping

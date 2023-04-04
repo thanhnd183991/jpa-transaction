@@ -1,0 +1,4 @@
+https://stackoverflow.com/questions/28620419/spring-transactions-entitymanager-lifecycle
+https://dzone.com/articles/how-does-spring-transactional
+https://sites.google.com/site/bingsite/web-development/frameworks-overview/java-ee/jpa-1/entitymanager-transaction-and-everything
+http://www.mastertheboss.com/java-ee/transactions/declarative-transactions-with-java-ee-7
