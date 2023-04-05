@@ -2,3 +2,6 @@ https://stackoverflow.com/questions/28620419/spring-transactions-entitymanager-l
 https://dzone.com/articles/how-does-spring-transactional
 https://sites.google.com/site/bingsite/web-development/frameworks-overview/java-ee/jpa-1/entitymanager-transaction-and-everything
 http://www.mastertheboss.com/java-ee/transactions/declarative-transactions-with-java-ee-7
+https://docs.jboss.org/hibernate/core/3.5/api/org/hibernate/FlushMode.html#MANUAL
+AbstractSharedSessionContract
+JdbcCoordinatorImpl

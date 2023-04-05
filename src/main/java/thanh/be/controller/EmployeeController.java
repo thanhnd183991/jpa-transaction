@@ -24,20 +24,8 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                employeeRepo.save(employee);
-            }
-        });
-
-//        executorService.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//                employeeRepo.save(employee);
-//            }
-//        });
+        employeeRepo.save(employee);
+        List<Employee> employees = employeeRepo.findAll();
 
         return ResponseEntity.ok().body("create new employee");
     }
@@ -45,6 +33,7 @@ public class EmployeeController {
     @GetMapping
     public ResponseEntity<List<Employee>> list() {
         List<Employee> employees = employeeRepo.findAll();
+        List<Employee> employee2 = employeeRepo.findAll();
         return ResponseEntity.ok().body(employees);
     }
 
